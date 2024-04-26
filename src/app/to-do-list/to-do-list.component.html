@@ -1,0 +1,17 @@
+<div class="container">
+  <h1>Lista de Tareas</h1>
+
+  <form (submit)="addTodo()" class="form">
+    <input [(ngModel)]="newTodo" name="newTodoDescription" placeholder="Nueva tarea" class="input-field" maxlength="50">
+    <button type="submit" class="button">Agregar</button>
+  </form>
+
+  <mat-selection-list>
+    @for (todo of todos; track todos) {
+    <mat-list-option [class.done]="todo.done" [class.undone]="!todo.done" (click)="toggleTodoDone(todo)">
+      <span class="letra">{{todo.description}}</span>
+      <button class="delete-button" mat-icon-button (click)="deleteTodo(todo)"> <img src="../../assets/icon_bin.png" alt=""></button>
+    </mat-list-option>
+    }
+  </mat-selection-list>
+</div>
